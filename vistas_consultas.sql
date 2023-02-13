@@ -77,7 +77,7 @@ GROUP BY v.medio_envio
 ORDER BY prioridad_high_critical desc;
 
 -- 3 Pérdidas por descuentos
-CREATE VIEW perdida_descuento AS
+-- CREATE VIEW perdida_descuento AS
 SELECT 
 	ventaM.segmento, 
 	sum(ventaM.cantidad*ventaM.precio_unitario*d.descuento) AS perdidas_descuento, 
@@ -95,7 +95,7 @@ GROUP BY ventaM.segmento
 ORDER BY ventas_unicas desc;
 
 -- 4 Premios mejores clientes
-CREATE VIEW obsequio_cliente AS
+-- CREATE VIEW obsequio_cliente AS
 WITH premios(nombre, mayor_compra, ventas_unicas, ventas_netas) AS (
 	SELECT 
 		c.nombre,

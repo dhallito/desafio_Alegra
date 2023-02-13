@@ -2,12 +2,18 @@ import pandas as pd
 from sqlalchemy import create_engine
 import mysql.connector
 
+### Conexión a la Base de Datos Local
+
 mydb = mysql.connector.connect(
   host="localhost",
   user="root",
   password="123456789",
   database="deliveryapp"
 )
+
+### Creación de Tablas: venta, descuento y cliente
+### Primero se borra toda la información de las tablas existentes, ya que se considera el documento de Excel como la información real
+### Solo la tabla venta cuenta con Foreign Key
 
 mycursor = mydb.cursor()
 
@@ -52,6 +58,8 @@ sql = """   CREATE TABLE venta (
 mycursor.execute(sql)
     
 mydb.commit()
+
+### Organización de la información de Excel utilizando pandas y carga de los datos al servidor de MySQL
 
 engine = create_engine('mysql://root:123456789@localhost/deliveryapp')
 
